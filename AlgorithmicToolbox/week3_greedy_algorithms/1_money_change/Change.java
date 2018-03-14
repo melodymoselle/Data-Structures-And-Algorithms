@@ -2,8 +2,19 @@ import java.util.Scanner;
 
 public class Change {
     private static int getChange(int m) {
-        //write your code here
-        return m;
+        int[] values = {10, 5, 1};
+        int n = 0;
+        for (int v : values) {
+          if (m == 0) {
+            return n;
+          }
+          while (m >= v) {
+            m -= v;
+            n++;
+            // System.out.print(v + " ");
+          }
+        }
+        return n;
     }
 
     public static void main(String[] args) {
