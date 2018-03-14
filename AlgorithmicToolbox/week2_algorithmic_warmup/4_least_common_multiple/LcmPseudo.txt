@@ -1,0 +1,4 @@
+LcmPrimeFacorization(a, b):
+A[]
+if a%
+B[]

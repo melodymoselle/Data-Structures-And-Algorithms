@@ -1,7 +1,7 @@
 import java.util.*;
 
-public class LCM {
-  private static long lcm_naive(int a, int b) {
+public class LcmNaive {
+  private static long lcm(int a, int b) {
     for (long l = 1; l <= (long) a * b; ++l)
       if (l % a == 0 && l % b == 0)
         return l;
@@ -14,6 +14,6 @@ public class LCM {
     int a = scanner.nextInt();
     int b = scanner.nextInt();
 
-    System.out.println(lcm_naive(a, b));
+    System.out.println(lcm(a, b));
   }
 }
