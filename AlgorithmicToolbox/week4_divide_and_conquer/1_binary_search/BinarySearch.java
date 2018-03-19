@@ -3,22 +3,17 @@ import java.util.*;
 
 public class BinarySearch {
 
-    static int binarySearch(int[] a, int x) {
-        int left = 0, right = a.length-1;
-        if (right < left) {
+    static int binarySearch(int[] arr, int low, int high, int x) {
+        if (high < low) {
           return -1;
         }
-        int mid = (left + right)/2;
-        for (int i = 0; i < a.length; i++) {
-          System.out.print(a[i] + " ");
-        }
-        System.out.println(": " + x + " : " );
-        if (x == a[mid]) {
+        int mid = (low + high)/2;
+        if (x == arr[mid]) {
           return mid;
-        } else if (x < a[mid]) {
-          return binarySearch(Arrays.copyOfRange(a, left, mid), x);
+        } else if (x < arr[mid]) {
+          return binarySearch(arr, low, mid-1, x);
         } else {
-          return binarySearch(Arrays.copyOfRange(a, mid+1, right+1), x);
+          return binarySearch(arr, mid+1, high, x);
         }
     }
 
@@ -36,7 +31,7 @@ public class BinarySearch {
         }
         for (int i = 0; i < m; i++) {
             //replace with the call to binarySearch when implemented
-            System.out.print(binarySearch(a, b[i]) + " ");
+            // System.out.print(binarySearch(a, b[i]) + " ");
         }
     }
     static class FastScanner {

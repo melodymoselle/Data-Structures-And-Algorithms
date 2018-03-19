@@ -1,16 +1,17 @@
 import java.util.*;
 import java.io.*;
 
-public class MaxPairwiseProductStressTest {
+public class StressTest {
 	static void stressTest(int N, int M){
 		while (true) {
       int[] arr = generateArray(N, M);
-			long result1 = LinearSearch.linearSearch(arr);
-			long result2 = BinarySearch.binarySearch(arr);
+      int x = (int)Math.floor(Math.random()*M);
+			long result1 = LinearSearch.linearSearch(arr, x);
+			long result2 = BinarySearch.binarySearch(arr, 0, arr.length-1, x);
 			if (result1 == result2) {
-				System.out.println("OK");
+				System.out.println("OK: " + x + " : " + result1 + " : " + result2);
 			} else {
-				System.out.println("Wrong answer: " + result1 + " : " + result2);
+				System.out.println("Wrong answer: " + x + " : " + result1 + " : " + result2);
 				return;
 			}
 		}
@@ -23,6 +24,7 @@ public class MaxPairwiseProductStressTest {
       for (int i = 0; i < n; i++) {
         arr[i] = (int)Math.floor(Math.random()*M);
       }
+      Arrays.sort(arr);
       for (int i = 0; i < arr.length; i++) {
         System.out.print(arr[i] + " ");
       }

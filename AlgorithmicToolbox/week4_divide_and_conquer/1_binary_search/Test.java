@@ -5,9 +5,14 @@ public class Test {
 	static void test(int N, int M){
       int[] arr = generateGivenLengthArray(N, M);
       Arrays.sort(arr);
+      for (int i = 0; i < arr.length; i++) {
+        System.out.print(arr[i] + " ");
+      }
+      System.out.println("");
+
       int x = (int)Math.floor(Math.random()*M);
 			// long result1 = LinearSearch.linearSearch(arr, x);
-			long result2 = BinarySearch.binarySearch(arr, x);
+			long result2 = BinarySearch.binarySearch(arr, 0, arr.length-1, x);
 
       System.out.println(x + ":" + result2);
 		}
