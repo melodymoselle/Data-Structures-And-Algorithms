@@ -31,7 +31,7 @@ public class BinarySearch {
         }
         for (int i = 0; i < m; i++) {
             //replace with the call to binarySearch when implemented
-            // System.out.print(binarySearch(a, b[i]) + " ");
+            System.out.print(binarySearch(a, 0, a.length-1, b[i]) + " ");
         }
     }
     static class FastScanner {
