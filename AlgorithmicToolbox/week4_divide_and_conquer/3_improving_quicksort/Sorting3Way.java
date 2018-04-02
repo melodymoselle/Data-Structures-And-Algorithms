@@ -9,20 +9,30 @@ public class Sorting3Way {
 
       int m1 = l;
       int m2 = r;
-      for (int i = l + 1; i <= r; i++) {
-          if (a[i] > x){
+      for (int i = l + 1; i <= m2; i++) {
+          if (a[i] == x){
               m2--;
               int t = a[i];
               a[i] = a[m2];
               a[m2] = t;
+              i--;
           }
           if (a[i] < x) {
               m1++;
               int t = a[i];
               a[i] = a[m1];
-              a[m2] = t;
+              a[m1] = t;
           }
       }
+        a[l] = a[m1];
+        a[m1] = a[m2];
+        a[m2] = x;
+        for (int i = m1, j = m2; j < a.length; i++, j++) {
+          int t = a[j];
+          a[j] = a[i];
+          a[i] = t;
+          m2 = i;
+        }
 
       int[] m = {m1, m2};
       return m;
@@ -56,10 +66,9 @@ public class Sorting3Way {
         
         int[] m = partition3(a, l, r);
         randomizedQuickSort(a, l, m[0]-1);
-        randomizedQuickSort(a, m[0]+1, m[1]-1);
         randomizedQuickSort(a, m[1]+1, r);
 
-        //
+        
         // int m = partition2(a, l, r);
         // randomizedQuickSort(a, l, m - 1);
         // randomizedQuickSort(a, m + 1, r);
