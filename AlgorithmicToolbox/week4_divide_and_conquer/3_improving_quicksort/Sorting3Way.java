@@ -6,35 +6,29 @@ public class Sorting3Way {
 
     private static int[] partition3(int[] a, int l, int r) {
       int x = a[l];
+      int lo = l;
+      int hi = r;
 
-      int m1 = l;
-      int m2 = r;
-      for (int i = l + 1; i <= m2; i++) {
-          if (a[i] == x){
-              m2--;
-              int t = a[i];
-              a[i] = a[m2];
-              a[m2] = t;
-              i--;
-          }
-          if (a[i] < x) {
-              m1++;
-              int t = a[i];
-              a[i] = a[m1];
-              a[m1] = t;
-          }
-      }
-        a[l] = a[m1];
-        a[m1] = a[m2];
-        a[m2] = x;
-        for (int i = m1, j = m2; j < a.length; i++, j++) {
-          int t = a[j];
-          a[j] = a[i];
-          a[i] = t;
-          m2 = i;
+// System.out.println(lo + " : " + hi);
+      for (int i = lo+1; i <= hi; ) {
+        if (a[i] < x) {
+          int t = a[i];
+          a[i] = a[lo];
+          a[lo] = t;
+          lo++;
+          i++;
+        } else if (a[i] > x) {
+          int t = a[i];
+          a[i] = a[hi];
+          a[hi] = t;
+          hi--;
+        } else if (a[i] == x) {
+          i++;
         }
+// System.out.println(lo + " : " + hi);
+      }
 
-      int[] m = {m1, m2};
+      int[] m = {lo, hi};
       return m;
     }
 
@@ -59,10 +53,10 @@ public class Sorting3Way {
         if (l >= r) {
             return;
         }
-        int k = random.nextInt(r - l + 1) + l;
-        int t = a[l];
-        a[l] = a[k];
-        a[k] = t;
+        // int k = random.nextInt(r - l + 1) + l;
+        // int t = a[l];
+        // a[l] = a[k];
+        // a[k] = t;
         
         int[] m = partition3(a, l, r);
         randomizedQuickSort(a, l, m[0]-1);
